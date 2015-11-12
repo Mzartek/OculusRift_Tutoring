@@ -26,3 +26,7 @@
 *.exe
 *.out
 *.app
+
+# Useless folders
+OculusRift_Tutoring/Library
+OculusRift_Tutoring/Temp
