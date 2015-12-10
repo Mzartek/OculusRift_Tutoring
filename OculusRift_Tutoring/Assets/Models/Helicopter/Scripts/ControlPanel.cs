@@ -21,12 +21,18 @@ public class ControlPanel : MonoBehaviour {
     KeyCode TurnLeft = KeyCode.Q;
     [SerializeField]
     KeyCode TurnRight = KeyCode.E;
-    [SerializeField]
-    KeyCode MusicOffOn = KeyCode.M;
     
     private KeyCode[] keyCodes;
 
-    public Action<PressedKeyCode[]> KeyPressed;
+    public delegate void DelegateControllerUsed(
+        float leftTrigger, float rightTrigger, 
+        float leftYAxis, float rightXAxis,
+        float leftBumper, float rightBumper);
+    public delegate void DelegateKeyPressed(PressedKeyCode[] pressedKeyCode);
+
+    public DelegateControllerUsed ControllerUsed;
+    public DelegateKeyPressed KeyPressed;
+    
     private void Awake()
     {
         keyCodes = new[] {
@@ -51,24 +57,16 @@ public class ControlPanel : MonoBehaviour {
 	    var pressedKeyCode = new List<PressedKeyCode>();
 	    for (int index = 0; index < keyCodes.Length; index++)
 	    {
-	        var keyCode = keyCodes[index];
-	        if (Input.GetKey(keyCode))
+	        if (Input.GetKey(keyCodes[index]))
                 pressedKeyCode.Add((PressedKeyCode)index);
 	    }
 
-	    if (KeyPressed != null)
-	        KeyPressed(pressedKeyCode.ToArray());
+        if (ControllerUsed != null)
+            ControllerUsed(
+                Input.GetAxis("LeftTrigger"), Input.GetAxis("RightTrigger"),
+                Input.GetAxis("LeftYAxis"), Input.GetAxis("RightXAxis"),
+                Input.GetAxis("LeftBumper"), Input.GetAxis("RightBumper"));
 
-        // for test
-        if (Input.GetKey(MusicOffOn))
-        {
-           if (  MusicSound.volume == 1) return;
-/*            if (MusicSound.isPlaying)
-                MusicSound.Stop();
-            else*/
-                MusicSound.volume = 1;
-                MusicSound.Play();
-        }
-      
+	    if (KeyPressed != null) KeyPressed(pressedKeyCode.ToArray());      
 	}
 }
