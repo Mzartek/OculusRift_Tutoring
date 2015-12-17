@@ -2,47 +2,44 @@
 using System.Collections;
 
 public class GenerateTerrain : MonoBehaviour {
-
-    public Terrain terrain;
     public float Tiling = 10.0f;
 
+    public Terrain terrain;
+    public Shader shader;
+
+    public Texture2D grassTexture;
+    public Texture2D stoneTexture;
+    public Texture2D snowTexture;
+
+
     // Use this for initialization
-    void Start () {
-        GenTerrain();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+    void Start ()
+    {
+        UpdateTerrainHeight();
+        UpdateTerrainTexture();
 	}
 
-    void GenTerrain()
+    void UpdateTerrainHeight()
     {
         int xSize = terrain.terrainData.heightmapWidth;
         int zSize = terrain.terrainData.heightmapHeight;
         float[,] heights = terrain.terrainData.GetHeights(0, 0, xSize, zSize);
-
-        for(int z = 0; z < zSize; z++)
-            for(int x = 0; x < xSize; x++)
+        for (int z = 0; z < zSize; z++)
+        {
+            for (int x = 0; x < xSize; x++)
             {
                 heights[x, z] = Mathf.PerlinNoise((float)x / xSize * Tiling, (float)z / zSize * Tiling) / 10.0f;
             }
-        terrain.terrainData.SetHeights(0, 0, heights);
-        UpdateTerrainTexture(terrain.terrainData, 2, 1);
-    }
-
-    void UpdateTerrainTexture(TerrainData terrainData, int textureNumberFrom, int textureNumberTo)
-    {
-        float[,,] alphas = terrainData.GetAlphamaps(0, 0, terrainData.alphamapWidth, terrainData.alphamapHeight);
-        for (int i = 0; i < terrainData.alphamapWidth; i++)
-        {
-            for (int j = 0; j < terrainData.alphamapHeight; j++)
-            {
-                alphas[i, j, textureNumberTo] = Mathf.Max(alphas[i, j, textureNumberFrom], alphas[i, j, textureNumberTo]);
-                alphas[i, j, textureNumberFrom] = 0f;
-            }
         }
-        terrainData.SetAlphamaps(0, 0, alphas);
+        terrain.terrainData.SetHeights(0, 0, heights);
     }
 
+    void UpdateTerrainTexture()
+    {
+        Material material = new Material(shader);
+        material.SetTexture("_MainTex", grassTexture);
+
+        terrain.materialType = Terrain.MaterialType.Custom;
+        terrain.materialTemplate = material;
+    }
 }

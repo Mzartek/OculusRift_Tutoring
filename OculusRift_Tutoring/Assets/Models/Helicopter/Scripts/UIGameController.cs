@@ -30,7 +30,7 @@ public class UIGameController : MonoBehaviour
     private void ShowInfoPanel(bool isShow)
     {
         EngineForceView.gameObject.SetActive(!isShow);
-        RestartButton.SetActive(!isShow);
+        //RestartButton.SetActive(!isShow);
         InfoButton.SetActive(!isShow);
         InfoPanel.SetActive(isShow);
     }

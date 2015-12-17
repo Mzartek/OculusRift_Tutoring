@@ -10,15 +10,15 @@ public class ControlPanel : MonoBehaviour {
     [SerializeField]
     KeyCode SpeedDown = KeyCode.C;
     [SerializeField]
-    KeyCode Forward = KeyCode.W;
+    KeyCode Forward = KeyCode.Z;
     [SerializeField]
     KeyCode Back = KeyCode.S;
     [SerializeField]
-    KeyCode Left = KeyCode.A;
+    KeyCode Left = KeyCode.Q;
     [SerializeField]
     KeyCode Right = KeyCode.D;
     [SerializeField]
-    KeyCode TurnLeft = KeyCode.Q;
+    KeyCode TurnLeft = KeyCode.A;
     [SerializeField]
     KeyCode TurnRight = KeyCode.E;
     

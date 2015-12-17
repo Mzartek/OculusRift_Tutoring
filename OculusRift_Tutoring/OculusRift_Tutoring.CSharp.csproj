@@ -77,5 +77,8 @@
     <Compile Include="Assets\Models\Helicopter\Scripts\UIGameController.cs" />
     <Compile Include="Assets\Scripts\GenerateTerrain.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\TerrainShader.shader" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
