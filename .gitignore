@@ -27,6 +27,11 @@
 *.out
 *.app
 
+# Visual Studio
+*.sln
+*.suo
+*.csproj
+
 # Useless folders
 OculusRift_Tutoring/Library
 OculusRift_Tutoring/Temp
