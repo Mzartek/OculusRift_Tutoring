@@ -33,9 +33,9 @@
 *.csproj
 
 # Useless folders
-OculusRift_Tutoring/Library
-OculusRift_Tutoring/Temp
-OculusRift_Tutoring/obj
+Library
+Temp
+obj
 
 # Useless files
-OculusRift_Tutoring/ProjectSettings/ProjectVersion.txt
+ProjectSettings/ProjectVersion.txt
