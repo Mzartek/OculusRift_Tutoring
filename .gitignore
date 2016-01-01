@@ -36,3 +36,6 @@
 OculusRift_Tutoring/Library
 OculusRift_Tutoring/Temp
 OculusRift_Tutoring/obj
+
+# Useless files
+OculusRift_Tutoring/ProjectSettings/ProjectVersion.txt
