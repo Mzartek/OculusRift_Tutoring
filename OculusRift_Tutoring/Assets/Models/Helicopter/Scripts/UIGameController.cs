@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIGameController : MonoBehaviour
@@ -23,14 +23,14 @@ public class UIGameController : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update ()
+    {	
 	}
 
     private void ShowInfoPanel(bool isShow)
     {
         EngineForceView.gameObject.SetActive(!isShow);
-        //RestartButton.SetActive(!isShow);
+        RestartButton.SetActive(!isShow);
         InfoButton.SetActive(!isShow);
         InfoPanel.SetActive(isShow);
     }
@@ -39,6 +39,7 @@ public class UIGameController : MonoBehaviour
     {
         ShowInfoPanel(true);
     }
+
     public void HideInfo()
     {
         ShowInfoPanel(false);
@@ -46,6 +47,6 @@ public class UIGameController : MonoBehaviour
 
     public void RestartGame()
     {
-        Application.LoadLevel("Main");
+        SceneManager.LoadScene("Main");
     }
 }

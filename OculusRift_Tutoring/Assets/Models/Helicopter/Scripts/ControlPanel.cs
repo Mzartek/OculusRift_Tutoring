@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlPanel : MonoBehaviour {
+public class ControlPanel : MonoBehaviour
+{
     public AudioSource MusicSound;
 
     [SerializeField]
@@ -47,8 +48,8 @@ public class ControlPanel : MonoBehaviour {
 
     }
 
-    void Start () {
-	
+    void Start ()
+    {	
 	}
 
 	void FixedUpdate ()
