@@ -1,0 +1,114 @@
+.TH "HelicopterController" 3 "Thu Jan 7 2016" "Version 2.0" "OculusRift" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HelicopterController \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "AudioSource \fBHelicopterSound\fP"
+.br
+.ti -1c
+.RI "\fBControlPanel\fP \fBControlPanel\fP"
+.br
+.ti -1c
+.RI "Rigidbody \fBHelicopterModel\fP"
+.br
+.ti -1c
+.RI "\fBHeliRotorController\fP \fBMainRotorController\fP"
+.br
+.ti -1c
+.RI "\fBHeliRotorController\fP \fBSubRotorController\fP"
+.br
+.ti -1c
+.RI "float \fBaxisDeadZone\fP = 0\&.25f"
+.br
+.ti -1c
+.RI "float \fBTurnForce\fP = 3f"
+.br
+.ti -1c
+.RI "float \fBForwardForce\fP = 10f"
+.br
+.ti -1c
+.RI "float \fBForwardTiltForce\fP = 20f"
+.br
+.ti -1c
+.RI "float \fBTurnTiltForce\fP = 30f"
+.br
+.ti -1c
+.RI "float \fBEffectiveHeight\fP = 100f"
+.br
+.ti -1c
+.RI "float \fBturnTiltForcePercent\fP = 1\&.5f"
+.br
+.ti -1c
+.RI "float \fBturnForcePercent\fP = 1\&.3f"
+.br
+.ti -1c
+.RI "bool \fBIsOnGround\fP = true"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "float \fBEngineForce\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBStart\fP ()"
+.br
+.ti -1c
+.RI "void \fBFixedUpdate\fP ()"
+.br
+.ti -1c
+.RI "void \fBMoveProcess\fP ()"
+.br
+.ti -1c
+.RI "void \fBLiftProcess\fP ()"
+.br
+.ti -1c
+.RI "void \fBTiltProcess\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnControllerUsed\fP (float leftTrigger, float rightTrigger, float leftYAxis, float rightXAxis, float leftBumper, float rightBumper)"
+.br
+.ti -1c
+.RI "void \fBOnKeyPressed\fP (PressedKeyCode[] obj)"
+.br
+.ti -1c
+.RI "void \fBOnCollisionEnter\fP ()"
+.br
+.ti -1c
+.RI "void \fBOnCollisionExit\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "float \fB_engineForce\fP"
+.br
+.ti -1c
+.RI "Vector2 \fBhMove\fP = Vector2\&.zero"
+.br
+.ti -1c
+.RI "Vector2 \fBhTilt\fP = Vector2\&.zero"
+.br
+.ti -1c
+.RI "float \fBhTurn\fP = 0f"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OculusRift from the source code\&.

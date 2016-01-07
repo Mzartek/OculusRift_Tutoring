@@ -1,0 +1,69 @@
+.TH "HeliRotorController" 3 "Thu Jan 7 2016" "Version 2.0" "OculusRift" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HeliRotorController \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBAxis\fP { \fBX\fP, \fBY\fP, \fBZ\fP }"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Axis \fBRotateAxis\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "float \fBRotarSpeed\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBStart\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP ()"
+.br
+.RI "\fICette fonction applique une rotation au rotor sur un axe choisi préalablement\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "float \fB_rotarSpeed\fP"
+.br
+.ti -1c
+.RI "float \fBrotateDegree\fP"
+.br
+.ti -1c
+.RI "Vector3 \fBOriginalRotate\fP"
+.br
+.in -1c
+.SH "Member Data Documentation"
+.PP 
+.SS "float HeliRotorController\&._rotarSpeed\fC [private]\fP"
+la vitesse de rotation du rotor 
+.SS "Vector3 HeliRotorController\&.OriginalRotate\fC [private]\fP"
+Orientation initiale du rotor 
+.SS "Axis HeliRotorController\&.RotateAxis"
+permet de choisir un axe de rotation 
+.SS "float HeliRotorController\&.rotateDegree\fC [private]\fP"
+la rotation en degré qui est appliquée au rotor 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OculusRift from the source code\&.

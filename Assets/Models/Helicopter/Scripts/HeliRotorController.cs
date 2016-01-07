@@ -1,6 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-//rename
+/**
+ * \file HeliRotorController.cs
+ * \brief Cette classe permet de controler la rotation des rotors de l'hélicoptère
+ */
 public class HeliRotorController : MonoBehaviour
 {
 	public enum Axis
@@ -9,23 +12,26 @@ public class HeliRotorController : MonoBehaviour
 		Y,
 		Z,
 	}
-	public Axis RotateAxis;
-    private float _rotarSpeed;
+	public Axis RotateAxis;     /*!< permet de choisir un axe de rotation */
+    private float _rotarSpeed;  /*!< la vitesse de rotation du rotor */
     public float RotarSpeed
     {
         get { return _rotarSpeed; }
         set { _rotarSpeed = Mathf.Clamp(value,0,3000); }
     }
 
-    private float rotateDegree;
-    private Vector3 OriginalRotate;
+    private float rotateDegree;      /*!< la rotation en degré qui est appliquée au rotor */
+    private Vector3 OriginalRotate;  /*!< Orientation initiale du rotor */
 
-    void Start ()
+    private void Start ()
 	{
         OriginalRotate = transform.localEulerAngles;
 	}
 
-	void Update ()
+    /**
+     * \brief Cette fonction applique une rotation au rotor sur un axe choisi préalablement
+     */
+    private void Update ()
 	{
         rotateDegree += RotarSpeed * Time.deltaTime;
 	    rotateDegree = rotateDegree%360;

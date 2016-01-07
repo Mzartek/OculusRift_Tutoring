@@ -1,0 +1,66 @@
+.TH "GenerateTerrain" 3 "Thu Jan 7 2016" "Version 2.0" "OculusRift" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GenerateTerrain \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "float \fBTiling\fP = 10\&.0f"
+.br
+.ti -1c
+.RI "Terrain \fBterrain\fP"
+.br
+.ti -1c
+.RI "Shader \fBshader\fP"
+.br
+.ti -1c
+.RI "Texture2D \fBgrassTexture\fP"
+.br
+.ti -1c
+.RI "Texture2D \fBstoneTexture\fP"
+.br
+.ti -1c
+.RI "Texture2D \fBsnowTexture\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBStart\fP ()"
+.br
+.RI "\fILa fonction qui est lancée automatiquement et qui appelle les fonctions pour générer et texturer le terrain\&. \fP"
+.ti -1c
+.RI "void \fBUpdateTerrainHeight\fP ()"
+.br
+.RI "\fICette fonction génère les sommets du terrain grâce à l'algorithme de Perlin\&. \fP"
+.ti -1c
+.RI "void \fBUpdateTerrainTexture\fP ()"
+.br
+.RI "\fICette fonction texture le terrain via un shader\&. \fP"
+.in -1c
+.SH "Member Data Documentation"
+.PP 
+.SS "Texture2D GenerateTerrain\&.grassTexture"
+La texture herbe 
+.SS "Shader GenerateTerrain\&.shader"
+Le shader pour texturer le terrain 
+.SS "Texture2D GenerateTerrain\&.snowTexture"
+La texture neige 
+.SS "Texture2D GenerateTerrain\&.stoneTexture"
+La texture roche 
+.SS "Terrain GenerateTerrain\&.terrain"
+L'objet terrain 
+.SS "float GenerateTerrain\&.Tiling = 10\&.0f"
+Sert à parametrer le lissage du terrain 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OculusRift from the source code\&.

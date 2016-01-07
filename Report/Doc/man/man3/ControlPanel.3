@@ -1,0 +1,96 @@
+.TH "ControlPanel" 3 "Thu Jan 7 2016" "Version 2.0" "OculusRift" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ControlPanel \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "delegate void \fBDelegateControllerUsed\fP (float leftTrigger, float rightTrigger, float leftYAxis, float rightXAxis, float leftBumper, float rightBumper)"
+.br
+.ti -1c
+.RI "delegate void \fBDelegateKeyPressed\fP (PressedKeyCode[] pressedKeyCode)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "AudioSource \fBMusicSound\fP"
+.br
+.ti -1c
+.RI "\fBDelegateControllerUsed\fP \fBControllerUsed\fP"
+.br
+.ti -1c
+.RI "\fBDelegateKeyPressed\fP \fBKeyPressed\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAwake\fP ()"
+.br
+.RI "\fIInitialise le tableau de 'keyCodes'\&. \fP"
+.ti -1c
+.RI "void \fBFixedUpdate\fP ()"
+.br
+.RI "\fICette fonction appelle des fonctions, via des deleguate, si un événement est détécté \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "KeyCode \fBSpeedUp\fP = KeyCode\&.Space"
+.br
+.ti -1c
+.RI "KeyCode \fBSpeedDown\fP = KeyCode\&.C"
+.br
+.ti -1c
+.RI "KeyCode \fBForward\fP = KeyCode\&.Z"
+.br
+.ti -1c
+.RI "KeyCode \fBBack\fP = KeyCode\&.S"
+.br
+.ti -1c
+.RI "KeyCode \fBLeft\fP = KeyCode\&.Q"
+.br
+.ti -1c
+.RI "KeyCode \fBRight\fP = KeyCode\&.D"
+.br
+.ti -1c
+.RI "KeyCode \fBTurnLeft\fP = KeyCode\&.A"
+.br
+.ti -1c
+.RI "KeyCode \fBTurnRight\fP = KeyCode\&.E"
+.br
+.ti -1c
+.RI "KeyCode[] \fBkeyCodes\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "delegate void ControlPanel\&.DelegateControllerUsed (float leftTrigger, float rightTrigger, float leftYAxis, float rightXAxis, float leftBumper, float rightBumper)"
+prototype de la fonction attendu pour les controles de la manette 
+.SS "delegate void ControlPanel\&.DelegateKeyPressed (PressedKeyCode[] pressedKeyCode)"
+prototype de la fonction attendu pour les controles du clavier 
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBDelegateControllerUsed\fP ControlPanel\&.ControllerUsed"
+delegate sur la fonction qui gère les controles de la manette 
+.SS "KeyCode [] ControlPanel\&.keyCodes\fC [private]\fP"
+le tableau des touches permettant de controler l'hélicoptère 
+.SS "\fBDelegateKeyPressed\fP ControlPanel\&.KeyPressed"
+delagate sur la fonction qui gère les controles du clavier 
+.SS "AudioSource ControlPanel\&.MusicSound"
+la musique ou son qui est joué lorsque l'hélicoptère est en vol 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OculusRift from the source code\&.

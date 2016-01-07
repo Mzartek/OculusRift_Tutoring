@@ -1,25 +1,36 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class GenerateTerrain : MonoBehaviour {
-    public float Tiling = 10.0f;
+/**
+ *  \file GenerateTerrain.cs
+ *  \author Havranek Kevin, Pagny Jérémie 
+ *  \brief Dans ce fichier se trouvent les fonctions qui permettent de générer un terrain. 
+ */
 
-    public Terrain terrain;
-    public Shader shader;
+public class GenerateTerrain : MonoBehaviour
+{
+    public float Tiling = 10.0f;  /*!< Sert à parametrer le lissage du terrain */
 
-    public Texture2D grassTexture;
-    public Texture2D stoneTexture;
-    public Texture2D snowTexture;
+    public Terrain terrain; /*!< L'objet terrain */
+    public Shader shader;   /*!< Le shader pour texturer le terrain */
 
+    public Texture2D grassTexture;  /*!< La texture herbe */
+    public Texture2D stoneTexture;  /*!< La texture roche */
+    public Texture2D snowTexture;   /*!< La texture neige */
 
-    // Use this for initialization
-    void Start ()
+    /**
+     *  \brief La fonction qui est lancée automatiquement et qui appelle les fonctions 
+     *         pour générer et texturer le terrain
+     */   
+    private void Start ()
     {
         UpdateTerrainHeight();
         UpdateTerrainTexture();
 	}
 
-    void UpdateTerrainHeight()
+    /**
+     *  \brief Cette fonction génère les sommets du terrain grâce à l'algorithme de Perlin.
+     */
+    private void UpdateTerrainHeight()
     {
         int xSize = terrain.terrainData.heightmapWidth;
         int zSize = terrain.terrainData.heightmapHeight;
@@ -34,7 +45,10 @@ public class GenerateTerrain : MonoBehaviour {
         terrain.terrainData.SetHeights(0, 0, heights);
     }
 
-    void UpdateTerrainTexture()
+    /**
+     *  \brief Cette fonction texture le terrain via un shader
+     */
+    private void UpdateTerrainTexture()
     {
         Material material = new Material(shader);
         material.SetTexture("_MainTex", grassTexture);

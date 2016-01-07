@@ -38,18 +38,13 @@ public class HelicopterController : MonoBehaviour
     private float hTurn = 0f;
     public bool IsOnGround = true;
 
-    // Use this for initialization
-    void Start()
+    private void Start()
     {
         ControlPanel.ControllerUsed = OnControllerUsed;
         ControlPanel.KeyPressed = OnKeyPressed;
     }
-
-    void Update()
-    {
-    }
-
-    void FixedUpdate()
+    
+    private void FixedUpdate()
     {
         LiftProcess();
         MoveProcess();
