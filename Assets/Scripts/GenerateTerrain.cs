@@ -34,12 +34,14 @@ public class GenerateTerrain : MonoBehaviour
     {
         int xSize = terrain.terrainData.heightmapWidth;
         int zSize = terrain.terrainData.heightmapHeight;
+        System.Random rand = new System.Random();
+        float seed = rand.Next(0, 50);
         float[,] heights = terrain.terrainData.GetHeights(0, 0, xSize, zSize);
         for (int z = 0; z < zSize; z++)
         {
             for (int x = 0; x < xSize; x++)
             {
-                heights[x, z] = Mathf.PerlinNoise((float)x / xSize * Tiling, (float)z / zSize * Tiling) / 10.0f;
+                heights[x, z] = Mathf.PerlinNoise((seed + (float)x) / xSize * Tiling, (seed + (float)z) / zSize * Tiling) / 10.0f;
             }
         }
         terrain.terrainData.SetHeights(0, 0, heights);
