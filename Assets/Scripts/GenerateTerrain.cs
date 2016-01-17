@@ -41,7 +41,7 @@ public class GenerateTerrain : MonoBehaviour
         {
             for (int x = 0; x < xSize; x++)
             {
-                heights[x, z] = Mathf.PerlinNoise((seed + (float)x) / xSize * Tiling, (seed + (float)z) / zSize * Tiling) / 10.0f;
+                heights[x, z] = Mathf.PerlinNoise((seed + x) / xSize * Tiling, (seed + z) / zSize * Tiling) / 10.0f;
             }
         }
         terrain.terrainData.SetHeights(0, 0, heights);
