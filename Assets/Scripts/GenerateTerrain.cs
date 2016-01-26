@@ -24,7 +24,7 @@ public class GenerateTerrain : MonoBehaviour
     private void Start ()
     {
         UpdateTerrainHeight();
-        UpdateTerrainTexture();
+        //UpdateTerrainTexture();
 	}
 
     /**
