@@ -24,7 +24,7 @@ public class GenerateTerrain : MonoBehaviour
     private void Start ()
     {
         UpdateTerrainHeight();
-        //UpdateTerrainTexture();
+        UpdateTerrainTexture();
 	}
 
     /**
@@ -53,7 +53,9 @@ public class GenerateTerrain : MonoBehaviour
     private void UpdateTerrainTexture()
     {
         Material material = new Material(shader);
-        material.SetTexture("_MainTex", grassTexture);
+        material.SetTexture("_TextureGrass", grassTexture);
+        material.SetTexture("_TextureStone", stoneTexture);
+        material.SetTexture("_TextureSnow", snowTexture);
 
         terrain.materialType = Terrain.MaterialType.Custom;
         terrain.materialTemplate = material;
