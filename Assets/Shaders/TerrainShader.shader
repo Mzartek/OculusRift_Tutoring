@@ -11,7 +11,7 @@
 	{
 		Pass
 		{
-			Tags{ "RenderType" = "Opaque" }
+			Tags{ "RenderType" = "Opaque" "LightMode" = "ForwardBase" }
 
 			CGPROGRAM
 			#pragma vertex vert
@@ -56,19 +56,25 @@
 			{
 				float limit_1 = 60;
 				float limit_2 = 75;
+				fixed4 finalColor;
 
 				if (i.height < limit_1)
 				{
 					fixed4 grassColor = tex2D(_TextureGrass, i.texcoord) * testFunc(i.height, limit_1, 0);
 					fixed4 stoneColor = tex2D(_TextureStone, i.texcoord) * testFunc(i.height, 0, limit_1);
 
-					return grassColor + stoneColor;
+					finalColor = grassColor + stoneColor;
+				}
+				else
+				{
+					fixed4 stoneColor = tex2D(_TextureStone, i.texcoord) * testFunc(i.height, limit_2, limit_1);
+					fixed4 snowColor = tex2D(_TextureSnow, i.texcoord) * testFunc(i.height, limit_1, limit_2);
+
+					finalColor = stoneColor + snowColor;
 				}
 
-				fixed4 stoneColor = tex2D(_TextureStone, i.texcoord) * testFunc(i.height, limit_2, limit_1);
-				fixed4 snowColor =	tex2D(_TextureSnow , i.texcoord) * testFunc(i.height, limit_1, limit_2);
 				
-				return stoneColor + snowColor;
+				return UNITY_LIGHTMODEL_AMBIENT * finalColor;
 			}
 
 			ENDCG
