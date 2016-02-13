@@ -11,12 +11,11 @@
 	{
 		Pass
 		{
-			Lighting On
+			Tags{ "RenderType" = "Opaque" }
 
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-			//#pragma surface surf Lambert
 
 			#include "UnityCG.cginc"
 
@@ -71,11 +70,6 @@
 				
 				return stoneColor + snowColor;
 			}
-			
-			/*void surf(SurfaceInput IN, inout SurfaceOutput o)
-			{
-				o.Albedo = float4(1, 0, 0, 1);
-			}*/
 
 			ENDCG
 		}
