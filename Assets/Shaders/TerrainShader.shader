@@ -11,9 +11,13 @@
 	{
 		Pass
 		{
+			Lighting On
+
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+			//#pragma surface surf Lambert
+
 			#include "UnityCG.cginc"
 
 			sampler2D _TextureGrass;
@@ -28,6 +32,16 @@
 				float height : HEIGHT;
 			};
 
+			struct SurfaceInput
+			{
+				float4 color : COLOR;
+			};
+
+			float testFunc(float value, float min, float max)
+			{
+				return clamp((value - min) / (max - min), 0, 1);
+			}
+
 			v2f vert(appdata_base v)
 			{
 				v2f o;
@@ -41,17 +55,27 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				fixed4 color;
+				float limit_1 = 60;
+				float limit_2 = 75;
 
-				if (i.height < 40)
-					color = tex2D(_TextureGrass, i.texcoord);
-				else if (i.height < 60)
-					color = tex2D(_TextureStone, i.texcoord);
-				else
-					color = tex2D(_TextureSnow, i.texcoord);
+				if (i.height < limit_1)
+				{
+					fixed4 grassColor = tex2D(_TextureGrass, i.texcoord) * testFunc(i.height, limit_1, 0);
+					fixed4 stoneColor = tex2D(_TextureStone, i.texcoord) * testFunc(i.height, 0, limit_1);
 
-				return color;
+					return grassColor + stoneColor;
+				}
+
+				fixed4 stoneColor = tex2D(_TextureStone, i.texcoord) * testFunc(i.height, limit_2, limit_1);
+				fixed4 snowColor =	tex2D(_TextureSnow , i.texcoord) * testFunc(i.height, limit_1, limit_2);
+				
+				return stoneColor + snowColor;
 			}
+			
+			/*void surf(SurfaceInput IN, inout SurfaceOutput o)
+			{
+				o.Albedo = float4(1, 0, 0, 1);
+			}*/
 
 			ENDCG
 		}
