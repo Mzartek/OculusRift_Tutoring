@@ -10,6 +10,8 @@ public class GenerateTerrain : MonoBehaviour
 {
     public float Tiling = 10.0f;  /*!< Sert à parametrer le lissage du terrain */
 
+    public Light theLight;
+
     public Terrain terrain; /*!< L'objet terrain */
     public Shader shader;   /*!< Le shader pour texturer le terrain */
 
@@ -56,6 +58,8 @@ public class GenerateTerrain : MonoBehaviour
         material.SetTexture("_TextureGrass", grassTexture);
         material.SetTexture("_TextureStone", stoneTexture);
         material.SetTexture("_TextureSnow", snowTexture);
+
+        //material.SetColor("_LightDiffColor", light.)
 
         terrain.materialType = Terrain.MaterialType.Custom;
         terrain.materialTemplate = material;
