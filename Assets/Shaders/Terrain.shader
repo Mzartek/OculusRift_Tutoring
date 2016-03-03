@@ -6,7 +6,7 @@
         _TextureStone("TextureStone", 2D) = "white" {}
         _TextureSnow("TextureSnow", 2D) = "white" {}
     }
-        SubShader
+    SubShader
     {
         Tags { "RenderType" = "Opaque" }
         LOD 100
