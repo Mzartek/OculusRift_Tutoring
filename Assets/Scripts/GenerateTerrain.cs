@@ -17,6 +17,7 @@ public class GenerateTerrain : MonoBehaviour
     public Texture2D grassTexture;  /*!< La texture herbe */
     public Texture2D stoneTexture;  /*!< La texture roche */
     public Texture2D snowTexture;   /*!< La texture neige */
+
 	public Light sunLight;
 
     /**
@@ -64,6 +65,7 @@ public class GenerateTerrain : MonoBehaviour
         //Light data
         material.SetVector("_LightColor", sunLight.color);
         material.SetVector("_LightDir", sunLight.transform.forward);
+        material.SetFloat("_LightIntensity", sunLight.intensity);
 
         terrain.materialType = Terrain.MaterialType.Custom;
         terrain.materialTemplate = material;
