@@ -5,6 +5,8 @@
 		_TextureGrass("TextureGrass", 2D) = "white" {}
 		_TextureStone("TextureStone", 2D) = "white" {}
 		_TextureSnow("TextureSnow", 2D) = "white" {}
+		_LightColor("LightColor", Color) = (0, 0, 0, 0)
+		_LightDir("LightDir", Vector) = (0, 0, 0, 0)
 	}
 
 		SubShader
@@ -22,6 +24,8 @@
 			sampler2D _TextureGrass;
 			sampler2D _TextureStone;
 			sampler2D _TextureSnow;
+			float4 _LightColor;
+			float4 _LightDir;
 
 			struct v2f
 			{
@@ -35,14 +39,6 @@
 			{
 				float4 color : COLOR;
 			};
-
-			float4 calcLight(float4 diffColor, float4 specColor, float3 N, float3 L, float3 V, float shininess)
-			{
-				float3 H = normalize(L + V);
-				float4 diff = max(dot(N, L), 0.0) * diffColor;
-				float4 spec = pow(max(dot(N, H), 0.0), shininess) * specColor;
-				return diff + spec;
-			}
 
 			float testFunc(float value, float min, float max)
 			{
@@ -82,7 +78,8 @@
 				}
 
 				
-				return UNITY_LIGHTMODEL_AMBIENT * finalColor;
+				//return UNITY_LIGHTMODEL_AMBIENT * finalColor;
+				return _LightColor * finalColor;
 			}
 
 			ENDCG

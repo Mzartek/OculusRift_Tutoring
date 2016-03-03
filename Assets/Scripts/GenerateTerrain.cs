@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 /**
  *  \file GenerateTerrain.cs
@@ -10,14 +11,13 @@ public class GenerateTerrain : MonoBehaviour
 {
     public float Tiling = 10.0f;  /*!< Sert à parametrer le lissage du terrain */
 
-    public Light theLight;
-
     public Terrain terrain; /*!< L'objet terrain */
     public Shader shader;   /*!< Le shader pour texturer le terrain */
 
     public Texture2D grassTexture;  /*!< La texture herbe */
     public Texture2D stoneTexture;  /*!< La texture roche */
     public Texture2D snowTexture;   /*!< La texture neige */
+	public Light sunLight;
 
     /**
      *  \brief La fonction qui est lancée automatiquement et qui appelle les fonctions 
@@ -55,11 +55,15 @@ public class GenerateTerrain : MonoBehaviour
     private void UpdateTerrainTexture()
     {
         Material material = new Material(shader);
+
+        //Texture data
         material.SetTexture("_TextureGrass", grassTexture);
         material.SetTexture("_TextureStone", stoneTexture);
         material.SetTexture("_TextureSnow", snowTexture);
 
-        //material.SetColor("_LightDiffColor", light.)
+        //Light data
+        material.SetVector("_LightColor", sunLight.color);
+        material.SetVector("_LightDir", sunLight.transform.forward);
 
         terrain.materialType = Terrain.MaterialType.Custom;
         terrain.materialTemplate = material;
