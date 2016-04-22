@@ -6,6 +6,9 @@
         _TextureStone("TextureStone", 2D) = "white" {}
         _TextureSnow("TextureSnow", 2D) = "white" {}
 
+        _GrayScaleTexture("GrayScaleTexture", 2D) = "white" {}
+        _GrayScale("GrayScale", Int) = 0
+
         _LightColor("LightColor", Color) = (0, 0, 0, 0)
         _LightDir("LightDir", Vector) = (0, 0, 0, 0)
         _LightIntensity("LightIntensity", Float) = 0
@@ -47,6 +50,9 @@
             float4 _TextureGrass_ST;
             float4 _TextureStone_ST;
             float4 _TextureSnow_ST;
+
+            sampler2D _GrayScaleTexture;
+            int _GrayScale;
 
             float4 _LightColor;
             float4 _LightDir;
@@ -96,12 +102,17 @@
                     finalColor  = tex2D(_TextureStone, i.uvStone) * testFunc(i.height, limit_2, limit_1);
                     finalColor += tex2D(_TextureSnow, i.uvSnow) * testFunc(i.height, limit_1, limit_2);
                 }
-                
+
+                float3 L = -mul(UNITY_MATRIX_IT_MV, _LightDir);
+
                 fixed4 lightColor = UNITY_LIGHTMODEL_AMBIENT;
-                lightColor += calcLight(_LightColor, _LightColor, i.normal, -mul(UNITY_MATRIX_IT_MV, _LightDir), normalize(i.position), 70);
+                lightColor += calcLight(_LightColor, _LightColor, i.normal, L, normalize(i.position), 70);
                 lightColor *= _LightIntensity;
                 
-                return finalColor * lightColor;
+                float grayLevel = max(dot(i.normal, L), 0.0f);
+                float2 grayTextureUV = float2(grayLevel, 1.0f);
+                
+                return finalColor * tex2D(_GrayScaleTexture, i.uvGrass);
             }
             ENDCG
         }

@@ -11,6 +11,8 @@ public class GenerateTerrain : MonoBehaviour
 {
     public float Tiling = 10.0f;  /*!< Sert à parametrer le lissage du terrain */
 
+    public int grayScale;
+
     public Terrain terrain; /*!< L'objet terrain */
     public Shader shader;   /*!< Le shader pour texturer le terrain */
 
@@ -62,6 +64,10 @@ public class GenerateTerrain : MonoBehaviour
         material.SetTexture("_TextureStone", stoneTexture);
         material.SetTexture("_TextureSnow", snowTexture);
 
+        //GrayScale data
+        material.SetTexture("_GrayScaleTexture", GenerateGrayScaleTexture());
+        material.SetInt("_GrayScale", grayScale);
+
         //Light data
         material.SetVector("_LightColor", sunLight.color);
         material.SetVector("_LightDir", sunLight.transform.forward);
@@ -69,5 +75,19 @@ public class GenerateTerrain : MonoBehaviour
 
         terrain.materialType = Terrain.MaterialType.Custom;
         terrain.materialTemplate = material;
+    }
+
+    private Texture2D GenerateGrayScaleTexture()
+    {
+        Texture2D texture = new Texture2D(grayScale, 1);
+
+        float level = 1.0f / (grayScale - 1);
+        for (int i = 0; i < grayScale; i++)
+        {
+            texture.SetPixel(i, 1, new Color(level * i, level * i, level * i));
+        }
+        texture.Apply();
+
+        return texture;
     }
 }
