@@ -1,0 +1,24 @@
+3. Shader pour le terrain	
+	3.1 Pourquoi en avoir besoin ?	
+		Un shader est un programme executé par la carte graphique et qui va rendre possible plusieurs effets grapique tels que les explosions ou simplement de texturer des objets.
+		C'est dans le but de texturer notre terrain ainsi que de lui appliquer un effet de toon que nous avons besoin des shaders.
+		Notre shader va donc texturer notre terrain avec trois textures qui vont être appliquées aux parties du terrain.
+
+	3.2 Côté C#	
+		Pour pouvoir utiliser un shader avec unity il faut passer par un script, qui chez nous est en C#.
+		Dans ce script nous devons déclarer un objet de type "Shader" qui est notre shader, nous avons également besoin de trois variables de type
+		"Texture2D" pour stocker nos textures.
+		Il nous faut ensuite un objet de type "Material", c'est cet objet qui va faire le lien entre le terrain et le shader.
+		C'est via l'objet "Material" que nous envoyons nos textures et autres variables au shader.
+
+		Pour l'effet de toon shading nous générons une texture de niveau de gris que nous envoyons au shader.
+
+	3.3 Côté Shader	
+		Le shader va reçevoir les textures ainsi que les données de la lumière qui sont sa couleur, son intensité ainsi que sa direction.
+		Nous avons du recréer l'éclairage de phong car nous n'utilisions plus le shader par défaut, cependant nous avons fait du bling phong.
+		Le bling phong est une variante de phong qui allège le calcul du reflet.
+		Nous calculons l'éclairage de phong avec la couleur de la lumiere, le vecteur normal, le vecteur direction de la lumiere, le shininess ainsi que le vecteur de vue.
+		Pour texturer le terrain nous regardons la position du pixel et selon celle-ci nous appliquons la texture voulu. Les textures sont mixer pour eviter un changement brutal de texture.
+		Pour le toon shading nous avons une texture de niveau de gris dans laquelle nous choisissons une valeur selon l'intensité de la lumière que reçoit le pixel.
+
+
