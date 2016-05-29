@@ -108,11 +108,26 @@
                 fixed4 lightColor = UNITY_LIGHTMODEL_AMBIENT;
                 lightColor += calcLight(_LightColor, _LightColor, i.normal, L, normalize(i.position), 70);
                 lightColor *= _LightIntensity;
+				
+				//TEST TOON SHADING
+				float intensity = dot(normalize(L), i.normal);
+				if(intensity < 0)
+					intensity = 0;
+					
+				if (intensity > 0.95)
+					finalColor = float4(1.0,1,1,1.0) * finalColor;
+				else if (intensity > 0.5)
+					finalColor = float4(0.7,0.7,0.7,1.0) * finalColor;
+				else if (intensity > 0.05)
+					finalColor = float4(0.35,0.35,0.35,1.0) * finalColor;
+				else
+					finalColor = float4(0.1,0.1,0.1,1.0) * finalColor;
+				//END TOON SHADING	
                 
                 float grayLevel = max(dot(i.normal, L), 0.0f);
                 float2 grayTextureUV = float2(grayLevel, 1.0f);
                 
-                return finalColor * tex2D(_GrayScaleTexture, i.uvGrass);
+                return finalColor; //* tex2D(_GrayScaleTexture, i.uvGrass);
             }
             ENDCG
         }
