@@ -22,3 +22,12 @@
 		Pour le toon shading nous avons une texture de niveau de gris dans laquelle nous choisissons une valeur selon l'intensité de la lumière que reçoit le pixel.
 
 
+5. Conclusion
+	5.1 Ce qui a été fait
+		Lors de ce second semèstre nous avons donc découvert les shaders sous unity dans le langage CG.
+		Nous avons réussi à texturer notre terrain avec plusieurs textures selon la hauteur de celui-ci.
+		Nous avons également recréer la gestion de la lumière avec un bling phong.
+
+	5.2 Ce qui n’a pas été fait
+		Nous voulions faire un effet de toon shading, on a commencer à le faire mais il ne fonctionne pas très bien.
+		Nous n'avons malheuresement pas eu le temps necessaire pour pouvoir nous occuper pleinement de ce problème.
