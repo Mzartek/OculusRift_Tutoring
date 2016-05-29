@@ -109,7 +109,7 @@
                 lightColor += calcLight(_LightColor, _LightColor, i.normal, L, normalize(i.position), 70);
                 lightColor *= _LightIntensity;
 				
-				//TEST TOON SHADING
+				//TOON SHADING
 				float intensity = dot(normalize(L), i.normal);
 				if(intensity < 0)
 					intensity = 0;
