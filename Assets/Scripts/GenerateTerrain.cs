@@ -80,11 +80,14 @@ public class GenerateTerrain : MonoBehaviour
     private Texture2D GenerateGrayScaleTexture()
     {
         Texture2D texture = new Texture2D(grayScale, 1);
+        texture.filterMode = FilterMode.Point;
 
-        float level = 1.0f / (grayScale - 1);
+        float level = 1.0f / grayScale;
         for (int i = 0; i < grayScale; i++)
         {
-            texture.SetPixel(i, 1, new Color(level * i, level * i, level * i));
+            float Y = level * (i + 1);
+            Debug.Log(Y);
+            texture.SetPixel(i, 1, new Color(Y, Y, Y));
         }
         texture.Apply();
 
